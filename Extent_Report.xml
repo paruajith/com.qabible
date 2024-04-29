@@ -1,0 +1,10 @@
+<suite name="My Test Suite">
+	<listeners>
+		<listener class-name="utilities.ExtentReport" />
+	</listeners>
+	<test name="My Test">
+		<classes>
+			<class name="com.qabible.testcases.LoginTestcases" />
+		</classes>
+	</test>
+</suite>

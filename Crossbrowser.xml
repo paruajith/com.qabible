@@ -1,0 +1,18 @@
+<suite name="CrossBrowserSuite">
+	<test name="ChromeTest">
+		<parameter name="browser" value="Chrome"></parameter>
+		<classes>
+			<class name="com.qabible.testcases.LoginTestcases">
+
+			</class>
+		</classes>
+	</test>
+	<test name="EdgeTest">
+		<parameter name="browser" value="Edge"></parameter>
+		<classes>
+			<class name="com.qabible.testcases.LoginTestcases">
+
+			</class>
+		</classes>
+	</test>
+</suite>
