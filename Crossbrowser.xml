@@ -3,8 +3,16 @@
 		<parameter name="browser" value="Chrome"></parameter>
 		<classes>
 			<class name="com.qabible.testcases.LoginTestcases">
-
-			</class>
+				</class>
+			<class name="com.qabible.testcases.ClientsPageTestcases">
+				</class>
+			<class name="com.qabible.testcases.HomePageTestCases">
+				</class>
+			<class name="com.qabible.testcases.WorkersTestCases">
+				</class>
+			<class name="com.qabible.testcases.CreateWorkersTestcases">
+				</class>
+			
 		</classes>
 	</test>
 	<test name="EdgeTest">
