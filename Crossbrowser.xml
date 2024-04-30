@@ -15,8 +15,8 @@
 
 		</classes>
 	</test>
-	<test name="EdgeTest">
-		<parameter name="browser" value="Edge"></parameter>
+	<test name="FirefoxTest">
+		<parameter name="browser" value="Firefox"></parameter>
 		<classes>
 			<class name="com.qabible.testcases.LoginTestcases">
 

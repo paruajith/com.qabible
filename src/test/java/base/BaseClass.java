@@ -15,6 +15,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 
@@ -37,29 +38,29 @@ public class BaseClass {
 
 		if (browser.equals("Chrome")) {
 
-			driver = new ChromeDriver();
+			this.driver = new ChromeDriver();
 
 		}
 
-		else if (browser.equals("Edge")) {
-			driver = new EdgeDriver();
+		else if (browser.equals("Firefox")) {
+			this.driver = new FirefoxDriver();
 		}
-		driver.get("https://www.qabible.in/payrollapp/site/login");
+		this.driver.get("https://www.qabible.in/payrollapp/site/login");
 
-		driver.get(prop.getProperty("baseUrl"));
+		this.driver.get(prop.getProperty("baseUrl"));
 
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		this.driver.manage().window().maximize();
+		this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 
 	@AfterMethod
 	public void afterMethod(ITestResult iTestResult) throws IOException {
 		if (iTestResult.getStatus() == ITestResult.FAILURE) {
 			CaptureScreenshotOnFailure object = new CaptureScreenshotOnFailure();
-			object.captureScreenShotForFailedTestcase(driver, iTestResult.getName());
+			object.captureScreenShotForFailedTestcase(this.driver, iTestResult.getName());
 		}
 
-		driver.close();
+		this.driver.close();
 	}
 
 }
