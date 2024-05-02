@@ -41,10 +41,17 @@ public class GeneralUtilities {
 		return element.getText();
 
 	}
-	public void functionToScrollDownTheWindow(WebDriver driver) {
+	public void functionToScrollDownTheWindow(WebDriver driver,int x,int y) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,500)", "");
+		js.executeScript("window.scrollBy("+x+","+y+");");
 		
 	}
-
+	public void mediumDelay() {
+		try {
+		    Thread.sleep(2000); // Wait for 3 seconds (adjust the time as needed)
+		} catch (InterruptedException e) {
+		    e.printStackTrace();
+		}
+		
+	}
 }

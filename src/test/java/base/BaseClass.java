@@ -30,8 +30,9 @@ public class BaseClass {
 		prop.load(ip);
 	}
 
-	@BeforeMethod
-    @Parameters("browser")
+	
+   	@BeforeMethod
+   	@Parameters("browser")
 	public void beforeMethod(String browser) throws IOException {
 
 		testBasic();

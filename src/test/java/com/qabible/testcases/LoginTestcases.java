@@ -25,7 +25,6 @@ public class LoginTestcases extends BaseClass {
 
 		objLoginPage = new LoginPage(driver);
 		objHomePage = new HomePage(driver);
-
 		objLoginPage.inputUserName(objectExcelRead.getStringData("login_data", 2, 0));
 		objLoginPage.inputPassWord(objectExcelRead.getStringData("login_data", 2, 1));
 		objLoginPage.clickOn_LoginButton();
@@ -35,9 +34,10 @@ public class LoginTestcases extends BaseClass {
 		Assert.assertEquals(actual, expected, Constant.errorMessageForFailedLogin);
 
 	}
-
+	@Test(groups = "critical", retryAnalyzer = retry.Retry.class)
 	public void verifyLoginWithInvalidUser() throws IOException {
-
+		objLoginPage = new LoginPage(driver);
+		objHomePage = new HomePage(driver);
 		objLoginPage.inputUserName(objectExcelRead.getStringData("login_data", 3, 0));
 		objLoginPage.inputPassWord(objectExcelRead.getStringData("login_data", 3, 1));
 		objLoginPage.clickOn_LoginButton();

@@ -26,7 +26,7 @@ public class HomePageTestCases extends BaseClass {
 	WebDriverWait wait;
 	ClientsPage objClientsPage;
 
-	@Test
+	@Test(retryAnalyzer = retry.Retry.class)
 	public void verifyNavigationBarWorkersLink() throws IOException {
 
 		objLoginPage = new LoginPage(driver);
@@ -46,7 +46,7 @@ public class HomePageTestCases extends BaseClass {
 		Assert.assertEquals(actual, expected, Constant.errorMessageForFailedNavigation);
 
 	}
-	@Test
+	@Test(retryAnalyzer = retry.Retry.class)
 	public void verifyNavigationBarClientsLink() throws IOException {
 
 		objLoginPage = new LoginPage(driver);

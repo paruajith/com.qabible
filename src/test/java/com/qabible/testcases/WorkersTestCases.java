@@ -18,8 +18,8 @@ public class WorkersTestCases extends BaseClass {
 	HomePage objHomePage;
 	WorkersPage objWorkersPage;
 	ExcelRead objExcelRead = new ExcelRead("src/main/resources/TestData.xlsx");
-	UpdateWorkerPage objectUpdateWorkerPage = new UpdateWorkerPage(driver);
-	@Test(enabled = false)
+	UpdateWorkerPage objectUpdateWorkerPage;
+	@Test(retryAnalyzer = retry.Retry.class,enabled = true)
 	public void verifyTheBackgroudColorOfResetButton() {
 
 		objLoginPage = new LoginPage(driver);
@@ -35,7 +35,7 @@ public class WorkersTestCases extends BaseClass {
 		Assert.assertEquals(actual, expected, "There is a mismatch in the background colors");
 	}
 
-	@Test(enabled = false)
+	@Test(retryAnalyzer = retry.Retry.class,enabled = true)
 	public void verifyTheTextOfSearchButton() {
 
 		objLoginPage = new LoginPage(driver);
@@ -51,7 +51,7 @@ public class WorkersTestCases extends BaseClass {
 		Assert.assertEquals(actual, expected, "The text doesnot match");
 	}
 
-	@Test(enabled = false)
+	@Test(retryAnalyzer = retry.Retry.class)
 	public void verifyTheToolTipOfDeleteIcon() {
 		objLoginPage = new LoginPage(driver);
 		objHomePage = new HomePage(driver);
@@ -86,11 +86,6 @@ public class WorkersTestCases extends BaseClass {
 		objWorkersPage.inputPostCodeToSearchBox(postCode);
 		objWorkersPage.inputNiNumberToSearchBox(niNumber);
 		objWorkersPage.clickSearchButton();
-		try {
-		    Thread.sleep(3000); // Wait for 3 seconds (adjust the time as needed)
-		} catch (InterruptedException e) {
-		    e.printStackTrace();
-		}
 		String actual = objWorkersPage.getDataInTheNameFieldOfTheResultTable();
 		String expected = objWorkersPage.getExpectedFullName(firstName, middleName, lastName);
 		Assert.assertEquals(actual, expected, "Search was unsuccessfull");
@@ -101,7 +96,7 @@ public class WorkersTestCases extends BaseClass {
 		return objExcelRead.getTestData("ResetData");
 	}
 
-	@Test(dataProvider = "getDataForResetButtonTestFromExcel",enabled = false)
+	@Test(dataProvider = "getDataForResetButtonTestFromExcel",enabled = true)
 	public void verifyWorkingOfResetButton(String firstName, String lastName, String postCode, String niNumber) {
 		objLoginPage = new LoginPage(driver);
 		objHomePage = new HomePage(driver);
@@ -128,19 +123,20 @@ public class WorkersTestCases extends BaseClass {
 		Assert.assertTrue(condition3, "PostCode Reset Failed");
 		Assert.assertTrue(condition4, "NiNumber Reset Failed");
 	}
-	@Test(enabled = false)
+	@Test(retryAnalyzer = retry.Retry.class,enabled = true)
 	public void verifyUpdateIconSuccessfullyNavigatesToUpdatePage() {
 		int row_to_be_checked_for_updation = 1;
 		objLoginPage = new LoginPage(driver);
 		objHomePage = new HomePage(driver);
 		objWorkersPage = new WorkersPage(driver);
+		objectUpdateWorkerPage = new UpdateWorkerPage(driver);
 		objLoginPage.inputUserName("carol");
 		objLoginPage.inputPassWord("1q2w3e4r");
 		objLoginPage.clickOn_LoginButton();
 		objHomePage.navigateToWorkersPage();
 		objWorkersPage.clickOnUpdateIconOnAnyRow(row_to_be_checked_for_updation);
 		String name = objectUpdateWorkerPage.getValueFromTheFirstNameFieldOrKnownNameField();
-		String expected =  "UPDATE WORKER: "+name;
+		String expected =  "UPDATE WORKER: "+name.toUpperCase();
 		String actual = objectUpdateWorkerPage.getHeaderForThePage();
 		Assert.assertEquals(actual, expected,"Header not matching so navigation unsuccessfull");
 			

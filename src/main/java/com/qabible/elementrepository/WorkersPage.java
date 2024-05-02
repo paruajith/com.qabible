@@ -92,7 +92,9 @@ public class WorkersPage {
 	}
 
 	public void clickSearchButton() {
+		
 		searchButton.click();
+		objGeneralUtilities.mediumDelay();
 	}
 
 	public String getDataInTheNameFieldOfTheResultTable() {
@@ -121,8 +123,10 @@ public class WorkersPage {
 	}
 
 	public void clickOnUpdateIconOnAnyRow(int row_to_be_checked_for_updation) {
+		PageFactory.initElements(driver, this);
 	    String xpath = "//table//tr[" + row_to_be_checked_for_updation + "]//td[8]//a[@title='Update']";
 	    WebElement updateIconLocator = driver.findElement(By.xpath(xpath));
+	    
 	    updateIconLocator.click();
 	}
 	public String getExpectedFullName(String firstName, String middleName, String lastName) {

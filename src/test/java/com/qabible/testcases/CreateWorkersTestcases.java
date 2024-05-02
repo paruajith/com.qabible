@@ -33,7 +33,7 @@ public class CreateWorkersTestcases extends BaseClass {
 	BankDetailsPage objectBankDetailsPage;
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-	@Test(enabled = false)
+	@Test(retryAnalyzer = retry.Retry.class)
 	public void verifySelectedValueFromTitleDropdown() throws IOException {
 		objLoginPage = new LoginPage(driver);
 		objHomePage = new HomePage(driver);
@@ -64,7 +64,7 @@ public class CreateWorkersTestcases extends BaseClass {
 
 	//}
 
-	@Test(dataProvider = "getFormData")
+	@Test(dataProvider = "getFormData",retryAnalyzer = retry.Retry.class)
 	public void testCreateWorkerFormAndNavigationToBankDetailsPage(String title, String firstName, String lastName,
 			String phone, String mobile, String email, String gender, String middleName, String dateOfBirth,
 			String addressLine1, String addressLine2, String addressLine3, String postCode, String Branch,

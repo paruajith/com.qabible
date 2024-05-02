@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class Retry implements IRetryAnalyzer {
 
 	public int counter = 0;
-	public int retryLimit = 3;
+	public int retryLimit = 1;
 
 	@Override
 	public boolean retry(ITestResult result) {

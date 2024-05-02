@@ -6,10 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import utilities.GeneralUtilities;
+import utilities.WaitUtility;
 
 public class LoginPage {
 	WebDriver driver;
 	GeneralUtilities objGeneralUtilities = new GeneralUtilities();
+	WaitUtility objectWaitUtility = new WaitUtility();
 	public LoginPage(WebDriver driver)
 	{
 		this.driver = driver;
@@ -27,7 +29,6 @@ public class LoginPage {
 	@FindBy(xpath = "//p[text()='Incorrect username or password.']")
 	WebElement errorMessage;
 	
-	
 	public void inputUserName(String user_name) {
 		userNameField.sendKeys(user_name);
 		
@@ -38,10 +39,10 @@ public class LoginPage {
 	}
 	public void clickOn_LoginButton() {
 		loginButton.click();
-		
 	}
 	
 	public String getTextOfLoginError() {
+	objectWaitUtility.waitForThePresenceOfAnElement("//p[text()='Incorrect username or password.']", driver);
 	return objGeneralUtilities.getTextForAnElement(errorMessage);
 	}
 

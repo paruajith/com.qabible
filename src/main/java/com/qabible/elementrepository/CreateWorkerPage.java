@@ -86,7 +86,8 @@ public class CreateWorkerPage {
 
 	}
 	public void clickOnNextButton() {
-		
+		 
+		objGeneralUtilities.functionToScrollDownTheWindow(driver, 0, 500);
 		nextButton.click();
 		
 	}

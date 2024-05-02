@@ -12,14 +12,15 @@ import base.BaseClass;
 
 public class ClientsPageTestcases extends BaseClass{
 	  LoginPage objLoginPage;
-			HomePage objHomePage;
-			ClientsPage objClientsPage;
-			WorkersPage objWorkersPage;
-  @Test
+	  HomePage objHomePage;
+	  ClientsPage objClientsPage;
+	  WorkersPage objWorkersPage;
+  @Test(retryAnalyzer = retry.Retry.class)
   public void verifyTheSearchWithOnlyClientId() {
-	  objLoginPage = new LoginPage(driver);
+	    objLoginPage = new LoginPage(driver);
 		objHomePage = new HomePage(driver);
 		objWorkersPage = new WorkersPage(driver);
+		objClientsPage = new ClientsPage(driver);
 		objLoginPage.inputUserName("carol");
 		objLoginPage.inputPassWord("1q2w3e4r");
 		objLoginPage.clickOn_LoginButton();

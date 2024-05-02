@@ -29,7 +29,7 @@ public class ClientsPage {
 
 	@FindBy(xpath = "//button[text()='Search']")
 	WebElement searchButton;
-	@FindBy(xpath = "//table//tr[1]//td[1]")
+	@FindBy(xpath = "//table//tr[1]//td[1][text()=2]")
 	WebElement clientIdColumnFromResultTable;
 
 	public String getHeader() {
@@ -43,10 +43,11 @@ public class ClientsPage {
 
 	public void clickOnTheSearchButton() {
 		searchButton.click();
+		
 	}
-
 	public String getValueFromTheClientIdColumnOfTheResultTable() {
-		return objGeneralUtilities.getAttributeValueForAnElement(clientIdColumnFromResultTable, "value");
+		objectWaitUtility.waitUntilDesiredTextAppears(driver, clientIdColumnFromResultTable,"2" );
+		return clientIdColumnFromResultTable.getText();
 	}
 
 }
